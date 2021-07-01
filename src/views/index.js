@@ -9,7 +9,9 @@ import ViewerApi from '../api/ViewerApi'
 
 class Home extends Component {
   _onViewerCreated(viewer) {
-    global.viewerApi = new ViewerApi(viewer)
+    let viewerApi = new ViewerApi(viewer)
+    viewerApi.addBaseLayer()
+    global.viewerApi = viewerApi
   }
 
   componentDidMount() {}
