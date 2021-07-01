@@ -5,17 +5,21 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
+import axios from 'axios'
+import { DcLoader, HttpLoader } from './loader'
 import RouteList from './router'
-import { DcLoader, HttpLoader, UiLoader } from './loader'
 import './themes/index.scss'
 ;(() => {
-  new Promise((resolve) => {
+  let loaderPromise = new Promise((resolve) => {
     new DcLoader().load()
     new HttpLoader().load()
-    new UiLoader().load()
     resolve()
-  }).then(() => {
-    const el_root = document.getElementById('root')
-    ReactDOM.render(<RouteList />, el_root)
   })
+  Promise.all([axios.get('config/config.json'), loaderPromise]).then(
+    ([res]) => {
+      global.Config = res.data
+      const el_root = document.getElementById('root')
+      ReactDOM.render(<RouteList />, el_root)
+    }
+  )
 })()

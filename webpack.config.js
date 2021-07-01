@@ -111,6 +111,13 @@ module.exports = (env, argv) => {
       new CopywebpackPlugin({
         patterns: [
           {
+            from: path.join(__dirname, 'public'),
+            to: path.join(__dirname, 'dist'),
+            globOptions: {
+              ignore: ['**/*index.html'],
+            },
+          },
+          {
             from: path.join(dvgisDist, 'dc-sdk/dist/resources'),
             to: 'libs/dc-sdk/resources',
           },

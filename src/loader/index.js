@@ -5,4 +5,3 @@
 
 export { default as DcLoader } from './DcLoader'
 export { default as HttpLoader } from './HttpLoader'
-export { default as UiLoader } from './UiLoader'
