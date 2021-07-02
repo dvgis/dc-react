@@ -13,10 +13,10 @@ class ViewerApi {
   }
 
   addBaseLayer() {
-    let baidu = DC.ImageryLayerFactory.createAmapImageryLayer({
+    let baseLayer = DC.ImageryLayerFactory.createAmapImageryLayer({
       style: 'img',
     })
-    this._viewer.addBaseLayer(baidu)
+    this._viewer.addBaseLayer(baseLayer)
     return this
   }
 }
